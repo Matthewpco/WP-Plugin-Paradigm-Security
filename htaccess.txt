@@ -1,0 +1,11 @@
+# BEGIN PARADIGM SECURITY LOGIN URL REWRITES 
+RewriteEngine On
+RewriteCond %{QUERY_STRING} !^action=logout
+RewriteRule ^wp-login.php$ - [F,L]
+RewriteCond %{REQUEST_URI} ^/wp-admin/
+RewriteCond %{QUERY_STRING} !^action=logout
+RewriteCond %{QUERY_STRING} !^action=lostpassword
+RewriteCond %{HTTP_COOKIE} !^.*wordpress_logged_in.*$ [NC]
+RewriteCond %{REQUEST_URI} !^/wp-admin/admin-ajax.php
+RewriteRule . - [F,L]
+# END PARADIGM SECURITY
